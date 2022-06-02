@@ -26,7 +26,7 @@ class _ClockState extends State<Clock> {
   Widget build(BuildContext context) {
     final now = DateTime.now();
 
-    debugPrint('agora: $now');
+    //debugPrint('agora: $now');
 
     return Container(
       //color: Colors.blueGrey,
