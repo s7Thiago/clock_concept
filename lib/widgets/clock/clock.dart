@@ -18,6 +18,7 @@ class _ClockState extends State<Clock> {
   late PageController pageControllerUnidadeMinuto;
   late PageController pageControllerDezenaSegundo;
   late PageController pageControllerUnidadeSegundo;
+  late DateTime now;
 
   @override
   void initState() {
@@ -31,13 +32,19 @@ class _ClockState extends State<Clock> {
     pageControllerUnidadeSegundo = PageController(viewportFraction: 0.05);
 
     _timer = Timer.periodic(const Duration(milliseconds: 1000), (timer) {
+      now = DateTime.now();
+      pageControllerUnidadeSegundo.animateToPage(
+        now.second % 10,
+        duration: const Duration(milliseconds: 350),
+        curve: Curves.easeInOutQuad,
+      );
       setState(() {});
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    final now = DateTime.now();
+    now = DateTime.now();
 
     //debugPrint('agora: $now');
 
