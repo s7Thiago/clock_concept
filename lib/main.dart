@@ -12,11 +12,8 @@ class Main extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData.dark(),
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text(''),
-        ),
-        body: const Center(child: Clock()),
+      home: const Scaffold(
+        body: Center(child: Clock()),
       ),
     );
   }

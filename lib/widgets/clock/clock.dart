@@ -33,11 +33,44 @@ class _ClockState extends State<Clock> {
 
     _timer = Timer.periodic(const Duration(milliseconds: 1000), (timer) {
       now = DateTime.now();
+
+      // Movendo cada indicador periodicamente na sua respectiva unidade
+      pageControllerDezenaHora.animateToPage(
+        now.hour ~/ 10,
+        duration: const Duration(milliseconds: 350),
+        curve: Curves.easeInOutQuad,
+      );
+
+      pageControllerUnidadeHora.animateToPage(
+        now.hour % 10,
+        duration: const Duration(milliseconds: 350),
+        curve: Curves.easeInOutQuad,
+      );
+
+      pageControllerDezenaMinuto.animateToPage(
+        now.minute ~/ 10,
+        duration: const Duration(milliseconds: 350),
+        curve: Curves.easeInOutQuad,
+      );
+
+      pageControllerUnidadeMinuto.animateToPage(
+        now.minute % 10,
+        duration: const Duration(milliseconds: 350),
+        curve: Curves.easeInOutQuad,
+      );
+
+      pageControllerDezenaSegundo.animateToPage(
+        now.second ~/ 10,
+        duration: const Duration(milliseconds: 350),
+        curve: Curves.easeInOutQuad,
+      );
+
       pageControllerUnidadeSegundo.animateToPage(
         now.second % 10,
         duration: const Duration(milliseconds: 350),
         curve: Curves.easeInOutQuad,
       );
+
       setState(() {});
     });
   }
@@ -48,14 +81,8 @@ class _ClockState extends State<Clock> {
 
     //debugPrint('agora: $now');
 
-    // pageControllerUnidadeSegundo.animateToPage(
-    //   2,
-    //   duration: const Duration(milliseconds: 350),
-    //   curve: Curves.easeInOutQuad,
-    // );
-
     return Container(
-      //color: Colors.blueGrey,
+      color: Colors.transparent,
       width: MediaQuery.of(context).size.width * .93,
       height: MediaQuery.of(context).size.height * .87,
       child: Row(
