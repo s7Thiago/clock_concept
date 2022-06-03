@@ -24,12 +24,14 @@ class _ClockState extends State<Clock> {
   void initState() {
     super.initState();
 
-    pageControllerDezenaHora = PageController(viewportFraction: 0.05);
-    pageControllerUnidadeHora = PageController(viewportFraction: 0.05);
-    pageControllerDezenaMinuto = PageController(viewportFraction: 0.05);
-    pageControllerUnidadeMinuto = PageController(viewportFraction: 0.05);
-    pageControllerDezenaSegundo = PageController(viewportFraction: 0.05);
-    pageControllerUnidadeSegundo = PageController(viewportFraction: 0.05);
+    const double viewportFraction = 0.05;
+
+    pageControllerDezenaHora = PageController(viewportFraction: viewportFraction);
+    pageControllerUnidadeHora = PageController(viewportFraction: viewportFraction);
+    pageControllerDezenaMinuto = PageController(viewportFraction: viewportFraction);
+    pageControllerUnidadeMinuto = PageController(viewportFraction: viewportFraction);
+    pageControllerDezenaSegundo = PageController(viewportFraction: viewportFraction);
+    pageControllerUnidadeSegundo = PageController(viewportFraction: viewportFraction);
 
     _timer = Timer.periodic(const Duration(milliseconds: 1000), (timer) {
       now = DateTime.now();
@@ -83,10 +85,9 @@ class _ClockState extends State<Clock> {
 
     return Container(
       color: Colors.transparent,
-      width: MediaQuery.of(context).size.width * .93,
-      height: MediaQuery.of(context).size.height * .87,
+      width: MediaQuery.of(context).size.width,
+      height: MediaQuery.of(context).size.height,
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           // Dezena Horas
           AnimatedSelector(

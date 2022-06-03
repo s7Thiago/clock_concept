@@ -19,7 +19,6 @@ class AnimatedSelector extends StatefulWidget {
 class _AnimatedSelectorState extends State<AnimatedSelector> {
   @override
   Widget build(BuildContext context) {
-    double _height = 36.0 * widget.count;
     return Expanded(
       child: Stack(
         alignment: Alignment.center,
@@ -34,23 +33,31 @@ class _AnimatedSelectorState extends State<AnimatedSelector> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Container(
-                    width: 37,
-                    height: _height,
+                    width: 40,
                     alignment: Alignment.center,
+                    margin: const EdgeInsets.symmetric(vertical: 0),
                     decoration: BoxDecoration(
-                      color: const Color.fromARGB(255, 87, 85, 85),
-                      borderRadius: index == 0
-                          ? const BorderRadius.only(
-                              topLeft: Radius.circular(8),
-                              topRight: Radius.circular(8),
-                            )
-                          : index == widget.count - 1
-                              ? const BorderRadius.only(
-                                  bottomLeft: Radius.circular(8),
-                                  bottomRight: Radius.circular(8),
-                                )
-                              : const BorderRadius.all(Radius.circular(0)),
-                    ),
+                        color: const Color.fromARGB(255, 87, 85, 85),
+                        borderRadius: index == 0
+                            ? const BorderRadius.only(
+                                topLeft: Radius.circular(8),
+                                topRight: Radius.circular(8),
+                              )
+                            : index == widget.count - 1
+                                ? const BorderRadius.only(
+                                    bottomLeft: Radius.circular(8),
+                                    bottomRight: Radius.circular(8),
+                                  )
+                                : const BorderRadius.all(Radius.circular(0)),
+                        boxShadow: [
+                          // BoxShadow(
+                          //   color: Colors.white.withOpacity(.5),
+                          //   offset: const Offset(-2, -2),
+                          //   blurRadius: 1,
+                          //   spreadRadius: 1,
+                          //   blurStyle: BlurStyle.outer
+                          // )
+                        ]),
                     child: Text('$index'),
                   ),
                 ],
@@ -62,15 +69,21 @@ class _AnimatedSelectorState extends State<AnimatedSelector> {
           Container(
             width: 47,
             decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: Colors.black45,
-                boxShadow: [
-                  BoxShadow(
-                      color: Colors.white.withOpacity(.5),
-                      offset: const Offset(-2, -2),
-                      blurRadius: 1,
-                      spreadRadius: 1)
-                ]),
+              shape: BoxShape.circle,
+              color: Colors.black45,
+              boxShadow: [
+                BoxShadow(
+                    color: Colors.white.withOpacity(.5),
+                    offset: const Offset(-2, -2),
+                    blurRadius: 1,
+                    spreadRadius: 1),
+                BoxShadow(
+                    color: Colors.black.withOpacity(.2),
+                    offset: const Offset(2, 2),
+                    blurRadius: 1,
+                    spreadRadius: 1)
+              ],
+            ),
           )
         ],
       ),
